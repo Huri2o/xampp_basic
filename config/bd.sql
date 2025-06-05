@@ -1,0 +1,8 @@
+CREATE TABLE usuarios(
+    id_user INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    contrasena VARCHAR(100) NOT NULL,
+    edad INT NOT NULL,
+    correo VARCHAR(200) NOT NULL,
+    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)
