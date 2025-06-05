@@ -39,7 +39,7 @@
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
                             <a href="index.php" class="nav-item nav-link">Home</a>
-                            <a href="shop.php" class="nav-item nav-link active">Shop</a>
+                            <a href="shop.php" class="nav-item nav-link">Shop</a>
                             <a href="detail.php" class="nav-item nav-link">Shop Detail</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down mt-1"></i></a>
