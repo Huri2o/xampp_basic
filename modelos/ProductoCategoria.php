@@ -10,9 +10,7 @@ class ProductoCategoriaModel {
     }
 
     public function getCategoriasPorProducto($id_producto) {
-        $stmt = $this->conn->prepare("SELECT c.* FROM categorias c 
-                                      JOIN producto_categoria pc ON c.id_categoria = pc.id_categoria 
-                                      WHERE pc.id_producto = ?");
+        $stmt = $this->conn->prepare("SELECT c.* FROM categorias c JOIN producto_categoria pc ON c.id_categoria = pc.id_categoria WHERE pc.id_producto = ?");
         $stmt->bind_param("i", $id_producto);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -26,7 +24,7 @@ class ProductoCategoriaModel {
     }
 
     public function eliminarCategoriasDeProducto($id_producto) {
-        $stmt = $this->conn->prepare("DELETE FROM producto_categoria WHERE id_producto = ?");
+        $stmt = $this->conn->prepare("DELETE FROM producto_categoria WHERE id_producto = ? AND id_categoria = ? ");
         $stmt->bind_param("i", $id_producto);
         return $stmt->execute();
     }
