@@ -28,7 +28,7 @@ class OrdenModel {
         return $stmt->execute();
     }
 
-    public function updateEstado($id_orden, $estado) {
+    public function update($id_orden, $estado) {
         $stmt = $this->conn->prepare("UPDATE ordenes SET estado = ? WHERE id_orden = ?");
         $stmt->bind_param("si", $estado, $id_orden);
         return $stmt->execute();
