@@ -26,3 +26,11 @@ function aplicarFiltros() {
     const search = document.getElementById('search-input')?.toLowerCase() || '';
     const precios = Array.from(document.querySelectorAll('[id^="price-"]:checked')).map(c => c.id);
 }
+
+cloneElement.querySelector('product-img').src = `../assets/img/product-${p.id_producto % 9 +1}.jpg`;
+cloneElement.querySelector('product-img').alt = p.nombre_producto;
+cloneElement.querySelector('product-name').textContent = p.nombre_producto;
+cloneElement.querySelector(`product-name`).href = `detail.php?id=${p.id_producto}`;
+cloneElement.querySelector(`btn-detail`).href = `detail.php?id=${p.id_producto}`;
+cloneElement.querySelector('product-price').textContent = `$${p.precio}`;
+cloneElement.querySelector('product-price2').textContent = `$${(p.precio*1.2).toFixed(2)}`;
