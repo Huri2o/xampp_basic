@@ -23,7 +23,13 @@ class DetalleOrdenModel {
         return $stmt->execute();
     }
 
-    public function deleteByOrden($id_orden) {
+    public function update($data)
+    {
+        $stmt = $this->conn->prepare("UPDATE detalle_orden SET id_orden=?, id_producto=?, cantidad=?, precio_unitario=? WHERE id_detalle=?");
+        $stmt->bind_param("iiidi", $data['id_orden'], $data['id_producto'], $data['cantidad'], $data['precio_unitario'], $data['id_detalle']);
+        return $stmt->execute();
+    }
+    public function delete($id_orden) {
         $stmt = $this->conn->prepare("DELETE FROM detalle_orden WHERE id_orden = ?");
         $stmt->bind_param("i", $id_orden);
         return $stmt->execute();

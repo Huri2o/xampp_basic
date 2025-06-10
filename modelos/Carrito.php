@@ -22,13 +22,13 @@ class CarritoModel {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function addProducto($data) {
+    public function create($data) {
         $stmt = $this->conn->prepare("INSERT INTO carrito (id_usuario, id_producto, cantidad) VALUES (?, ?, ?)");
         $stmt->bind_param("iii", $data['id_usuario'], $data['id_producto'], $data['cantidad']);
         return $stmt->execute();
     }
 
-    public function updateCantidad($id_carrito, $cantidad) {
+    public function update($id_carrito, $cantidad) {
         $stmt = $this->conn->prepare("UPDATE carrito SET cantidad = ? WHERE id_carrito = ?");
         $stmt->bind_param("ii", $cantidad, $id_carrito);
         return $stmt->execute();
