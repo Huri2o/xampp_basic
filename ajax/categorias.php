@@ -10,16 +10,20 @@ $method = $_SERVER['REQUEST_METHOD'];
 switch ($method) {
     case 'GET':
         echo json_encode($categoria->getAll());
-        break;
 
+        break;
     case 'POST':
         $data = json_decode(file_get_contents("php://input"), true);
         echo json_encode(['success' => $categoria->create($data)]);
+    
+
+
         break;
 
     case 'PUT':
         $data = json_decode(file_get_contents("php://input"), true);
         echo json_encode(['success' => $categoria->update($data)]);
+        
         break;
 
     case 'DELETE':
@@ -29,7 +33,11 @@ switch ($method) {
 
     default:
         http_response_code(405);
-        echo json_encode(["error" => "Método no permitido"]);
+        echo json_encode(["error" => "Method not allowed"]);
         break;
+
+
 }
+
+
 ?>

@@ -6,27 +6,38 @@ class ProductoCategoriaModel {
 
     public function __construct()
     {
-        $this->conn = new mysqli("localhost", "root", "", "ecom");
+        $this->conn = new mysqli("localhost", "root", "", "ecom2");
     }
 
-    public function getCategoriasPorProducto($id_producto) {
-        $stmt = $this->conn->prepare("SELECT c.* FROM categorias c JOIN producto_categoria pc ON c.id_categoria = pc.id_categoria WHERE pc.id_producto = ?");
-        $stmt->bind_param("i", $id_producto);
-        $stmt->execute();
-        $result = $stmt->get_result();
+    public function getAll() {
+        $result = $this->conn->query("SELECT * FROM producto_categoria");
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function asignarCategoria($id_producto, $id_categoria) {
+    public function create($data) {
         $stmt = $this->conn->prepare("INSERT INTO producto_categoria (id_producto, id_categoria) VALUES (?, ?)");
-        $stmt->bind_param("ii", $id_producto, $id_categoria);
+        $stmt->bind_param("ii", $data['id_producto'], $data['id_categoria']);
         return $stmt->execute();
     }
 
-    public function eliminarCategoriasDeProducto($id_producto) {
-        $stmt = $this->conn->prepare("DELETE FROM producto_categoria WHERE id_producto = ? AND id_categoria = ? ");
-        $stmt->bind_param("i", $id_producto);
+    public function update($data) {
+        $stmt = $this->conn->prepare("UPDATE producto_categoria SET id_categoria=? WHERE id_producto=?");
+        $stmt->bind_param("ii", $data['id_categoria'], $data['id_producto']);
         return $stmt->execute();
+    }
+
+    public function delete($id) {
+        $stmt = $this->conn->prepare("DELETE FROM producto_categoria WHERE id_producto=?");
+        $stmt->bind_param("i", $id);
+        return $stmt->execute();
+    }
+
+    public function getById($id) {
+        $stmt = $this->conn->prepare("SELECT * FROM producto_categoria WHERE id_producto=?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
     }
 }
 ?>

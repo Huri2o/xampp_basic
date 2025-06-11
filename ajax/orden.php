@@ -1,5 +1,5 @@
 <?php
-require_once '../modelos/Ordenes.php';
+require_once '../modelos/Orden.php';
 
 header('Content-Type: application/json');
 

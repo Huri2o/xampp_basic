@@ -6,7 +6,7 @@ class ProductoModel {
 
     public function __construct()
     {
-        $this->conn = new mysqli("localhost", "root", "", "ecom");
+        $this->conn = new mysqli("localhost", "root", "", "ecom2");
     }
 
     public function getAll() {
