@@ -1,5 +1,5 @@
 <?php
-require_once "conexion.php";
+require_once "../config/conexion.php";
 
 class ProductoModel {
     private $conn;
@@ -32,12 +32,12 @@ class ProductoModel {
         return $stmt->execute();
     }
 
-    public function getById($id) {
+/*     public function getById($id) {
         $stmt = $this->conn->prepare("SELECT * FROM productos WHERE id_producto=?");
         $stmt->bind_param("i", $id);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_assoc();
-    }
+    } */
 }
 ?>

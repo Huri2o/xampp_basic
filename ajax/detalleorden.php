@@ -9,7 +9,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 
 switch ($method) {
     case 'GET':
-        echo json_encode($detalle->getByOrden($id_orden));
+        echo json_encode($detalle->getAll());
         break;
 
     case 'POST':

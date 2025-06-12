@@ -33,8 +33,3 @@ switch ($method) {
         break;
 }
 ?>
-
-<!--GET	Consultar datos	Obtener todos los registros o uno en específico
-    POST	Crear un nuevo registro	Agregar usuarios, productos, órdenes, etc.
-    PUT	Actualizar un registro existente	Modificar datos de un usuario, producto, etc., PATCH: modifica solo un campo
-    DELETE	Eliminar un registro	Borrar una orden, un producto, etc. -->

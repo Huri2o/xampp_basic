@@ -1,5 +1,5 @@
 <?php
-require_once "conexion.php";
+require_once "../config/conexion.php";
 
 class DetalleOrdenModel {
     private $conn;
@@ -8,14 +8,19 @@ class DetalleOrdenModel {
     {
         $this->conn = new mysqli("localhost", "root", "", "ecom2");
     }
+        public function getAll (){
+        $result = $this -> conn -> query("SELECT * FROM detalle_orden");
+        return $result -> fetch_all(MYSQLI_ASSOC);
+    }
 
-    public function getByOrden($id_orden) {
+
+/*     public function getByOrden($id_orden) {
         $stmt = $this->conn->prepare("SELECT * FROM detalle_orden WHERE id_orden = ?");
         $stmt->bind_param("i", $id_orden);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
-    }
+    } */
 
     public function create($data) {
         $stmt = $this->conn->prepare("INSERT INTO detalle_orden (id_orden, id_producto, cantidad, precio_unitario) VALUES (?, ?, ?, ?)");
@@ -34,5 +39,7 @@ class DetalleOrdenModel {
         $stmt->bind_param("i", $id_orden);
         return $stmt->execute();
     }
+
+    /////////////////////////
 }
 ?>

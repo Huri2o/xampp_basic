@@ -1,5 +1,5 @@
 <?php
-require_once "conexion.php";
+require_once "../config/conexion.php";
 
 class CarritoModel {
     private $conn;
@@ -14,13 +14,13 @@ class CarritoModel {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getByUsuario($id_usuario) {
+/*     public function getByUsuario($id_usuario) {
         $stmt = $this->conn->prepare("SELECT * FROM carrito WHERE id_usuario = ?");
         $stmt->bind_param("i", $id_usuario);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
-    }
+    } */
 
     public function create($data) {
         $stmt = $this->conn->prepare("INSERT INTO carrito (id_usuario, id_producto, cantidad) VALUES (?, ?, ?)");
@@ -40,10 +40,10 @@ class CarritoModel {
         return $stmt->execute();
     }
 
-    public function vaciarCarrito($id_usuario) {
+/*     public function vaciarCarrito($id_usuario) {
         $stmt = $this->conn->prepare("DELETE FROM carrito WHERE id_usuario = ?");
         $stmt->bind_param("i", $id_usuario);
         return $stmt->execute();
-    }
+    } */
 }
 ?>
