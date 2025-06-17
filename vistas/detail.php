@@ -19,8 +19,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="../assets/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="../assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="../assets/css/style.css" rel="stylesheet">
@@ -102,15 +102,9 @@
         </div>
     </div>
     <!-- Topbar End -->
-
-
-    <!-- Navbar Start -->
 <?php
 require_once "nav.php";
 ?>
-    <!-- Navbar End -->
-
-
     <!-- Breadcrumb Start -->
     <div class="container-fluid">
         <div class="row px-xl-5">
@@ -133,7 +127,7 @@ require_once "nav.php";
                 <div id="product-carousel" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner bg-light">
                         <div class="carousel-item active">
-                            <img class="w-100 h-100" src="../assets/img/product-1.jpg" alt="Image">
+                            <img id="detalle-imagen" class="w-100 h-100" src="../assets/img/product-1.jpg" alt="Image">
                         </div>
                         <div class="carousel-item">
                             <img class="w-100 h-100" src="../assets/img/product-2.jpg" alt="Image">
@@ -156,7 +150,7 @@ require_once "nav.php";
 
             <div class="col-lg-7 h-auto mb-30">
                 <div class="h-100 bg-light p-30">
-                    <h3>Product Name Goes Here</h3>
+                    <h3 id="detalle-nombre">Product Name Goes Here</h3>
                     <div class="d-flex mb-3">
                         <div class="text-primary mr-2">
                             <small class="fas fa-star"></small>
@@ -167,8 +161,8 @@ require_once "nav.php";
                         </div>
                         <small class="pt-1">(99 Reviews)</small>
                     </div>
-                    <h3 class="font-weight-semi-bold mb-4">$150.00</h3>
-                    <p class="mb-4">Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit
+                    <h3 id="detalle-precio" class="font-weight-semi-bold mb-4">$150.00</h3>
+                    <p id="detalle-descripcion" class="mb-4">Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit
                         clita ea. Sanc ipsum et, labore clita lorem magna duo dolor no sea
                         Nonumy</p>
                     <div class="d-flex mb-3">
@@ -228,14 +222,14 @@ require_once "nav.php";
                                     <i class="fa fa-minus"></i>
                                 </button>
                             </div>
-                            <input type="text" class="form-control bg-secondary border-0 text-center" value="1">
+                            <input id="detail-qty" type="text" class="form-control bg-secondary border-0 text-center" value="1">
                             <div class="input-group-btn">
                                 <button class="btn btn-primary btn-plus">
                                     <i class="fa fa-plus"></i>
                                 </button>
                             </div>
                         </div>
-                        <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To
+                        <button class="btn btn-primary px-3 btn-add-cart"><i class="fa fa-shopping-cart mr-1"></i> Add To
                             Cart</button>
                     </div>
                     <div class="d-flex pt-2">
@@ -506,31 +500,11 @@ require_once "nav.php";
         </div>
     </div>
     <!-- Products End -->
-
-
-    <!-- Footer Start -->
 <?php
 require_once "footer.php";
 ?>
-    <!-- Footer End -->
-
-
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
-
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
-    <!-- Contact Javascript File -->
-    <script src="../assets/mail/jqBootstrapValidation.min.js"></script>
-    <script src="../assets/mail/contact.js"></script>
-
-    <!-- Template Javascript -->
-    <script src="../assets/js/main.js"></script>
+<script src="js/carrito.js"></script>
+<script src="js/producto.js"></script>
 </body>
 
 </html>

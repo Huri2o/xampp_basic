@@ -13,8 +13,12 @@
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="../assets/google.css" rel="stylesheet">  
-
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">  
+<script src="js/carrito.js"></script>
+<script src="js/productos.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', cargarProductosShop);
+</script>
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
@@ -86,7 +90,7 @@
             <div class="col-lg-4 col-6 text-left">
                 <form action="">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for products">
+                        <input type="text" class="form-control" id="search-input" placeholder="Search for products">
                         <div class="input-group-append">
                             <span class="input-group-text bg-transparent text-primary">
                                 <i class="fa fa-search"></i>
@@ -102,14 +106,9 @@
         </div>
     </div>
     <!-- Topbar End -->
-
-
-    <!-- Navbar Start -->
-
 <?php
 require_once "nav.php";
 ?>
-    <!-- Navbar End -->
 
 
     <!-- Breadcrumb Start -->
@@ -278,48 +277,42 @@ require_once "nav.php";
                             </div>
                         </div>
                     </div>
+<template id="template-producto">
+  <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
+    <div class="product-item bg-light mb-4">
+      <div class="product-img position-relative overflow-hidden">
+        <img class="img-fluid w-100 product-img" src="" alt="">
+        <div class="product-action">
+          <a class="btn btn-outline-dark btn-square btn-add-cart" href="#"><i class="fa fa-shopping-cart"></i></a>
+          <a class="btn btn-outline-dark btn-square" href="#"><i class="far fa-heart"></i></a>
+          <a class="btn btn-outline-dark btn-square" href="#"><i class="fa fa-sync-alt"></i></a>
+          <a class="btn btn-outline-dark btn-square btn-detail" href="#"><i class="fa fa-search"></i></a>
+        </div>
+      </div>
+      <div class="text-center py-4">
+        <a class="h6 text-decoration-none text-truncate product-name" href="#"></a>
+        <div class="d-flex align-items-center justify-content-center mt-2">
+          <h5 class="product-price"></h5>
+          <h6 class="text-muted ml-2"><del class="product-old-price"></del></h6>
+        </div>
+        <div class="d-flex align-items-center justify-content-center mb-1">
+          <small class="fa fa-star text-primary mr-1"></small>
+          <small class="fa fa-star text-primary mr-1"></small>
+          <small class="fa fa-star text-primary mr-1"></small>
+          <small class="fa fa-star text-primary mr-1"></small>
+          <small class="fa fa-star text-primary mr-1"></small>
+          <small>(99)</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
 
-                    <!--DEJAR UNO -->
-                    <template id="tarjeta_prod">
-                    <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
-                        <div class="product-item bg-light mb-4">
-                            <div class="product-img position-relative overflow-hidden">
-                                <img class="img-fluid w-100 product-img" src="" alt="">
-                                <div class="product-action">
-                                    <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
-                                    <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
-                                    <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
-                                    <a class="btn btn-outline-dark btn-square btn-detail" href=""><i class="fa fa-search"></i></a>
-                                </div>
-                            </div>
-                            <div class="text-center py-4">
-                                <a class="h6 text-decoration-none text-truncate product-name" href=""></a>
-                                <div class="d-flex align-items-center justify-content-center mt-2">
-                                    <h5>$123.00</h5><h6 class="text-muted ml-2 product-price"><del>$123.00</del></h6>
-                                </div>
-                                <div class="d-flex align-items-center justify-content-center mb-1">
-                                    <small class="fa fa-star text-primary mr-1"></small>
-                                    <small class="fa fa-star text-primary mr-1"></small>
-                                    <small class="fa fa-star text-primary mr-1"></small>
-                                    <small class="fa fa-star text-primary mr-1"></small>
-                                    <small class="fa fa-star text-primary mr-1"></small>
-                                    <small>(99)</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    </template>
-                    
 
+ 
                     <div class="col-12">
                         <nav>
-                          <ul class="pagination justify-content-center">
-                            <li class="page-item disabled"><a class="page-link" href="#">Previous</span></a></li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                          </ul>
+                          <ul class="pagination justify-content-center" id="pagination"></ul>
                         </nav>
                     </div>
                 </div>
@@ -330,29 +323,9 @@ require_once "nav.php";
     <!-- Shop End -->
 
 
-    <!-- Footer Start -->
-<?php
+   <?php
 require_once "footer.php";
 ?>
-    <!-- Footer End -->
-
-
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
-
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/lib/easing/easing.min.js"></script>
-    <script src="../assets/lib/owlcarousel/owl.carousel.min.js"></script>
-
-    <!-- Contact Javascript File -->
-    <script src="../assets/mail/jqBootstrapValidation.min.js"></script>
-    <script src="../assets/mail/contact.js"></script>
-
-    <!-- Template Javascript -->
-    <script src="../assets/js/main.js"></script>
 </body>
 
 </html>
